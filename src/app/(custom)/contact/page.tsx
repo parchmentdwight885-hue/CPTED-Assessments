@@ -1,13 +1,13 @@
-// @claude:user-owned — public consultation inquiry page.
+// @claude:user-owned — confirmation page for successful inquiries.
 
 import type { Metadata } from 'next';
-import { ConsultationInquiryForm } from '@/components/custom/consultation-inquiry-form';
+import { ConsultationConfirmation } from '@/components/custom/consultation-confirmation';
 
 export const metadata: Metadata = {
-  title: 'Start a consultation',
-  description: 'Share the context for a Waymark Ember CPTED consultation.',
+  title: 'Inquiry received',
+  description: 'Your Waymark Ember consultation inquiry has been received.',
 };
 
-export default function ContactPage() {
-  return <ConsultationInquiryForm />;
+export default function ConsultationConfirmationPage() {
+  return <ConsultationConfirmation />;
 }
