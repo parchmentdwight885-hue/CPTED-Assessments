@@ -92,7 +92,9 @@ describe('/llms.txt route', () => {
 
     it('starts with the site name heading and description blockquote', () => {
       expect(
-        body.startsWith('# Waymark Ember\n\n> Safer places, designed with people in mind.'),
+        body.startsWith(
+          '# Thoughtful Design\n\n> CPTED design reviews that catch security gaps at the drawing board, before construction begins.',
+        ),
       ).toBe(true);
     });
 

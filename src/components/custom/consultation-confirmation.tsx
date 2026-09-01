@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { contactEmail } from '@/lib/brand';
+import { siteName } from '@/lib/site';
 
 export function ConsultationConfirmation() {
   return (
@@ -22,8 +23,8 @@ export function ConsultationConfirmation() {
               Thank you for sharing the context.
             </h1>
             <p className="mt-5 max-w-xl text-body-lg text-muted-foreground">
-              Your note is with Waymark Ember. We will review the site or project details and get
-              back to you with a considered next step for your consultation.
+              Your note is with {siteName}. We will review the site or project details and get back
+              to you with a considered next step for your consultation.
             </p>
             <p className="mt-6 border-l-2 border-primary/30 pl-4 text-small text-muted-foreground">
               If the question is time-sensitive, you can also reach us at{' '}
@@ -31,7 +32,7 @@ export function ConsultationConfirmation() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href="/">Back to Waymark Ember</Link>
+                <Link href="/">Back to {siteName}</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link href="/contact">

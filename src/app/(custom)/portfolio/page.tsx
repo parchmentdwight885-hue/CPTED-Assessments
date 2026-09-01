@@ -7,11 +7,11 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { CASE_STUDIES } from '@/lib/portfolio/case-studies';
+import { siteName } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Sample assessments',
-  description:
-    'Preliminary CPTED design reviews, shared to show how Waymark Ember reads a site before you start a consultation.',
+  description: `Preliminary CPTED design reviews, shared to show how ${siteName} reads a site before you start a consultation.`,
   alternates: { canonical: '/portfolio' },
 };
 
@@ -20,13 +20,13 @@ export default function PortfolioIndexPage() {
     <main>
       <section className="section-lg border-b border-border bg-muted/35">
         <div className="container-page">
-          <p className="text-eyebrow">Sample work</p>
+          <p className="text-eyebrow text-olive">Sample work</p>
           <h1 className="mt-4 max-w-2xl font-display text-h1 tracking-tight text-foreground">
             A look at how we read a place.
           </h1>
           <p className="mt-5 max-w-xl text-body-lg text-muted-foreground">
-            Preliminary, design-stage CPTED reviews — shared here so you can see the depth of a
-            Waymark Ember assessment before starting a consultation.
+            Preliminary, design-stage CPTED reviews — shared here so you can see the depth of a{' '}
+            {siteName} assessment before starting a consultation.
           </p>
         </div>
       </section>

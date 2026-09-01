@@ -1,3 +1,15 @@
 /* @claude:user-owned — your custom global CSS: keyframes, animation classes, one-off global
  * styles, and @import your own .css files. Prefer tw-animate-css for motion (animate-in,
  * fade-in, slide-in-from-bottom-N, duration-*). globals.css is framework-owned — edit HERE. */
+
+/* Secondary accent — a warm olive, used sparingly alongside the navy brand
+   color (eyebrow labels, process-step numerals, decorative marks). Kept as a
+   plain custom property (not part of the brand-ramp derivation in
+   globals.css) since it's a one-off second color, not the site's primary hue. */
+:root {
+  --color-olive: oklch(0.611 0.081 103.5);
+}
+
+.text-olive {
+  color: var(--color-olive);
+}

@@ -24,6 +24,7 @@ import { Resend } from 'resend';
 import { contactEmail } from '@/lib/brand';
 import { prisma } from '@/lib/db';
 import { env } from '@/lib/env';
+import { siteName } from '@/lib/site';
 
 const MODEL = 'claude-sonnet-4-5';
 
@@ -81,14 +82,14 @@ async function draftWithClaude(inquiry: Inquiry): Promise<InquiryDrafts> {
   const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
 
   const system =
-    'You are the intake assistant for Waymark Ember, a CPTED (Crime Prevention ' +
+    `You are the intake assistant for ${siteName}, a CPTED (Crime Prevention ` +
     'Through Environmental Design) security consultancy run by a professional ' +
     'security consultant. You draft materials for the consultant to review — ' +
     'never claim anything is final, priced, scheduled, or promised on the ' +
     "consultant's behalf. Write in a warm, plain-spoken, professional tone. " +
     'No sales hype, no fear-mongering, no emojis.';
 
-  const prompt = `A prospective client submitted this inquiry through the Waymark Ember website contact form:
+  const prompt = `A prospective client submitted this inquiry through the ${siteName} website contact form:
 
 Name: ${inquiry.name}
 Email: ${inquiry.email}
@@ -103,7 +104,7 @@ REPLY_SUBJECT:
 A short, warm email subject line acknowledging their inquiry.
 
 REPLY_BODY:
-A personalized reply email (plain text, ready to send as-is) that thanks them by name, reflects back the specific situation they described, sets the expectation that a security consultant will personally follow up soon with next steps, and is signed "The Waymark Ember Team". Do not invent pricing, dates, or commitments the consultant hasn't made.
+A personalized reply email (plain text, ready to send as-is) that thanks them by name, reflects back the specific situation they described, sets the expectation that a security consultant will personally follow up soon with next steps, and is signed "The ${siteName} Team". Do not invent pricing, dates, or commitments the consultant hasn't made.
 
 INTERNAL_SUMMARY:
 2-4 sentences for the consultant: who this is, what they're asking for, and anything urgent or notable.
@@ -157,7 +158,7 @@ function parseDrafts(text: string): InquiryDrafts {
   return {
     replySubject:
       extractSection(text, 'REPLY_SUBJECT', SECTION_LABELS.slice(1)) ||
-      'Thanks for reaching out to Waymark Ember',
+      `Thanks for reaching out to ${siteName}`,
     replyBody: extractSection(text, 'REPLY_BODY', SECTION_LABELS.slice(2)),
     summary: extractSection(text, 'INTERNAL_SUMMARY', SECTION_LABELS.slice(3)),
     proposalDraft: extractSection(text, 'PROPOSAL_DRAFT', SECTION_LABELS.slice(4)),
@@ -174,7 +175,7 @@ async function sendEmails(inquiry: Inquiry, drafts: InquiryDrafts): Promise<void
     drafts.replyBody || 'Thanks for reaching out — a consultant will follow up soon.';
 
   await resend.emails.send({
-    from: `Waymark Ember <${fromAddress}>`,
+    from: `${siteName} <${fromAddress}>`,
     to: inquiry.email,
     replyTo: contactEmail,
     subject: drafts.replySubject,
@@ -182,7 +183,7 @@ async function sendEmails(inquiry: Inquiry, drafts: InquiryDrafts): Promise<void
   });
 
   await resend.emails.send({
-    from: `Waymark Ember Alerts <${fromAddress}>`,
+    from: `${siteName} Alerts <${fromAddress}>`,
     to: notifyAddress,
     subject: `New inquiry: ${inquiry.name}`,
     text: [

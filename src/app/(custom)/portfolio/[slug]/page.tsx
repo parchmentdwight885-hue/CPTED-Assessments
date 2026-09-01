@@ -80,15 +80,15 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <div className="mt-12 grid gap-12 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-16">
             <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
               <div>
-                <p className="text-eyebrow">Prepared by</p>
+                <p className="text-eyebrow text-olive">Prepared by</p>
                 <p className="mt-2 text-small text-foreground">{study.preparedBy}</p>
               </div>
               <div>
-                <p className="text-eyebrow">Assessment type</p>
+                <p className="text-eyebrow text-olive">Assessment type</p>
                 <p className="mt-2 text-small text-foreground">{study.assessmentType}</p>
               </div>
               <div>
-                <p className="text-eyebrow">Documents reviewed</p>
+                <p className="text-eyebrow text-olive">Documents reviewed</p>
                 <ul className="mt-2 space-y-1 text-small text-muted-foreground">
                   {study.documentsReviewed.map((doc) => (
                     <li key={doc}>{doc}</li>

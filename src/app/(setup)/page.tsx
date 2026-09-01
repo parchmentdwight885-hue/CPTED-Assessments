@@ -1,13 +1,14 @@
 // @claude:user-owned — starter home served at /. Replace it in place, or delete
 // this route group before adding another page that resolves to /.
 
-import { ArrowDownRight, ArrowUpRight, Check, Eye, Footprints, Lightbulb } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+import { Card, CardContent } from '@/components/ui/card';
+import { CASE_STUDIES } from '@/lib/portfolio/case-studies';
 import { siteDescription, siteName } from '@/lib/site';
 
 // Keep this a Server Component so it can export metadata.
@@ -19,126 +20,173 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const OBSERVATIONS = [
+const SERVICES = [
   {
     number: '01',
-    title: 'Visibility',
-    description: 'What can people see, and what disappears at the edges?',
-    icon: Eye,
+    label: 'Design stage',
+    title: 'Reviewed before construction',
+    description:
+      'Sightlines, entry points, and lighting plans are assessed on paper, while changes still cost a redline instead of a renovation.',
   },
   {
     number: '02',
-    title: 'Movement',
-    description: 'How do people arrive, pass through, pause, and find their way?',
-    icon: Footprints,
+    label: 'Chronological',
+    title: 'A dated record, start to finish',
+    description:
+      'Every observation is logged against the stage it applies to, so the report reads as a timeline the design team can act on in order.',
   },
   {
     number: '03',
-    title: 'Care + activity',
-    description: 'What signals welcome, ownership, attention, and everyday presence?',
-    icon: Lightbulb,
+    label: 'Detailed',
+    title: 'Findings tied to plan references',
+    description:
+      'Each recommendation cites the specific drawing, elevation, or zone it concerns — no generic checklist language.',
+  },
+  {
+    number: '04',
+    label: 'Outcome',
+    title: 'Better spaces, stronger communities',
+    description:
+      "The goal isn't a longer perimeter fence — it's natural surveillance and access control that residents barely notice.",
   },
 ] as const;
 
-function SitePlan() {
+const PROCESS_STEPS = [
+  {
+    index: '01',
+    title: 'Design review',
+    description:
+      'We read the site plan and elevations against CPTED principles and flag risk areas before groundwork begins.',
+  },
+  {
+    index: '02',
+    title: 'Site assessment',
+    description:
+      'For existing properties, a walk-through documents current sightlines, access control, and lighting against the plan.',
+  },
+  {
+    index: '03',
+    title: 'Report and recommendations',
+    description:
+      'A chronological, plan-referenced report sets out findings and prioritized changes for the design or property team.',
+  },
+  {
+    index: '04',
+    title: 'Implementation support',
+    description:
+      "We review revised drawings or completed works against the original recommendations and confirm they've been addressed.",
+  },
+] as const;
+
+/** Decorative hero mark — an arc, four site datums, and a stack of massed
+ * forms reading as a small building. Theme-aware via CSS custom properties
+ * (see globals.css / custom-style.css) so it follows dark mode automatically. */
+function HeroMark() {
   return (
-    <div className="relative aspect-square w-full max-w-[31rem] overflow-hidden border border-border bg-muted/50 p-5 shadow-xl sm:p-8">
-      <div className="absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:2.25rem_2.25rem]" />
-      <div className="relative flex h-full flex-col justify-between border border-border/80 bg-background/75 p-4 backdrop-blur-sm sm:p-6">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-caption font-semibold uppercase tracking-[0.18em] text-primary">
-              Field note
-            </p>
-            <p className="mt-1 font-display text-lg font-semibold tracking-tight">
-              A place in context
-            </p>
-          </div>
-          <Badge variant="outline" className="shrink-0 bg-background/80">
-            CPTED lens
-          </Badge>
-        </div>
+    <svg
+      viewBox="0 0 470 478"
+      className="w-full max-w-[26rem]"
+      role="img"
+      aria-label="Abstract illustration of a building massed within a site datum"
+    >
+      <title>A building massed within a site datum</title>
+      <path
+        d="M 235 14 A 225 225 0 0 0 235 464"
+        fill="none"
+        stroke="var(--color-primary)"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 235 14 A 225 225 0 0 1 235 464"
+        fill="none"
+        stroke="var(--color-olive)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeDasharray="0.5 12"
+      />
+      <circle cx="235" cy="14" r="5" fill="var(--color-primary)" />
+      <circle cx="235" cy="464" r="5" fill="var(--color-primary)" />
+      <circle cx="10" cy="239" r="5" fill="var(--color-primary)" />
+      <circle cx="460" cy="239" r="5" fill="var(--color-primary)" />
+      <line x1="235" y1="14" x2="235" y2="464" stroke="var(--color-border)" strokeWidth="1" />
+      <line x1="10" y1="239" x2="460" y2="239" stroke="var(--color-border)" strokeWidth="1" />
 
-        <div className="relative mx-auto flex aspect-[1.18] w-[78%] items-center justify-center border border-primary/45 bg-primary/10">
-          <div className="absolute -left-px top-1/4 h-1/2 w-1/4 border-y border-r border-primary/60 bg-primary/10" />
-          <div className="absolute -right-px top-1/4 h-1/2 w-1/4 border-y border-l border-primary/60 bg-primary/10" />
-          <div className="h-1/2 w-1/2 border border-primary/75 bg-primary/15" />
-          <div className="absolute -top-7 left-1/2 h-7 border-l border-dashed border-primary/70" />
-          <div className="absolute -bottom-7 left-1/2 h-7 border-l border-dashed border-primary/70" />
-          <div className="absolute left-1/2 top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-[0_0_0_6px_var(--color-background),0_0_0_7px_var(--color-primary)]" />
-          <span className="absolute -top-11 left-1/2 -translate-x-1/2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-            Arrival
-          </span>
-          <span className="absolute -bottom-11 left-1/2 -translate-x-1/2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-            Connection
-          </span>
-        </div>
-
-        <div className="flex items-end justify-between gap-5 text-xs text-muted-foreground">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-primary" /> Sightline
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full border border-primary" /> Threshold
-            </div>
-          </div>
-          <ArrowDownRight className="size-8 text-primary/80" strokeWidth={1.25} aria-hidden />
-        </div>
-      </div>
-    </div>
+      <g>
+        <ellipse cx="235" cy="381" rx="180" ry="10" fill="var(--color-primary)" opacity="0.08" />
+        <path
+          d="M 55 376 Q 130 358 195 376 T 340 368 Q 375 363 405 372"
+          fill="none"
+          stroke="var(--color-muted-foreground)"
+          strokeWidth="1.75"
+          opacity="0.5"
+        />
+        <polygon points="135,378 135,235 202,178 202,378" fill="var(--color-primary)" />
+        <polygon
+          points="135,235 202,178 202,235 162,264"
+          fill="var(--color-primary)"
+          opacity="0.75"
+        />
+        <polygon points="202,378 202,270 265,270 265,378" fill="var(--color-muted-foreground)" />
+        <polygon
+          points="265,270 265,378 292,378 292,281"
+          fill="var(--color-muted-foreground)"
+          opacity="0.8"
+        />
+        <polygon points="292,378 292,210 345,178 345,378" fill="var(--color-olive)" />
+        <polygon points="345,210 345,178 375,196 345,231" fill="var(--color-olive)" opacity="0.8" />
+      </g>
+    </svg>
   );
 }
 
 export default function HomePage() {
+  const featured = CASE_STUDIES[0];
+
   return (
     <main className="overflow-hidden">
+      {/* ================= HERO ================= */}
       <section className="section-lg relative">
-        <div className="pointer-events-none absolute -right-36 -top-28 size-[30rem] rounded-full bg-primary/10 blur-3xl" />
-        <div className="container-page relative grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,31rem)] lg:items-center lg:gap-20">
-          <div className="max-w-3xl animate-in fade-in slide-in-from-bottom-3 duration-700">
-            <div className="mb-8 flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.18em] text-primary">
-              <span className="h-px w-10 bg-primary" />
+        <div className="container-page relative grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
+          <div className="max-w-2xl animate-in fade-in slide-in-from-bottom-3 duration-700">
+            <div className="mb-6 flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.18em] text-olive">
+              <span className="h-px w-6 bg-olive" />
               CPTED consultancy
             </div>
-            <h1 className="max-w-4xl font-display text-[clamp(3.2rem,8vw,7.6rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-foreground">
-              Safer places,
-              <span className="block text-primary">designed with</span>
-              <span className="block">people in mind.</span>
+            <h1 className="font-display text-h1 font-normal leading-[1.08] tracking-tight text-foreground sm:text-[3.4rem]">
+              Security reviewed at the drawing board, not after the ribbon cutting.
             </h1>
-            <div className="mt-10 grid max-w-2xl gap-8 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-              <p className="max-w-xl text-body-lg text-muted-foreground">
-                Waymark Ember helps owners, planners, developers, and communities read the
-                relationship between place and safety — then turn that reading into practical design
-                guidance.
-              </p>
-              <div className="flex flex-wrap gap-3 sm:justify-end">
-                <Button asChild size="lg" className="group">
-                  <Link href="/contact">
-                    Talk through your place
-                    <ArrowUpRight
-                      className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href="#approach">Our approach</a>
-                </Button>
-              </div>
+            <p className="mt-7 max-w-lg text-body-lg text-muted-foreground">
+              We assess layout, sightlines, and access before a single wall goes up — so the
+              finished property is safer by design, not by afterthought.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Button asChild size="lg" className="group">
+                <Link href="/contact">
+                  Request an assessment
+                  <ArrowUpRight
+                    className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/portfolio">View a sample report</Link>
+              </Button>
             </div>
           </div>
-          <div className="flex justify-end animate-in fade-in slide-in-from-bottom-3 duration-700 delay-150">
-            <SitePlan />
+          <div className="flex justify-center animate-in fade-in slide-in-from-bottom-3 duration-700 delay-150 lg:justify-end">
+            <HeroMark />
           </div>
         </div>
       </section>
 
+      {/* ================= APPROACH ================= */}
       <section id="approach" className="border-y border-border bg-muted/35">
         <div className="container-page grid gap-12 py-20 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24 lg:py-28">
           <div>
-            <p className="text-eyebrow">The Waymark Ember lens</p>
-            <h2 className="mt-4 max-w-md font-display text-h2 tracking-tight">
+            <p className="text-eyebrow text-olive">The {siteName} lens</p>
+            <h2 className="mt-4 max-w-md font-display text-h2 font-normal tracking-tight">
               Security is not separate from how a place feels.
             </h2>
           </div>
@@ -150,7 +198,7 @@ export default function HomePage() {
             </p>
             <p>
               Led by Dwight Parchment, whose frontline experience as a security officer grounds the
-              practice in real-world awareness, Waymark Ember makes established CPTED principles
+              practice in real-world awareness, {siteName} makes established CPTED principles
               accessible and actionable.
             </p>
             <div className="flex items-center gap-3 pt-3 text-small font-medium text-foreground">
@@ -163,68 +211,151 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ================= SERVICES ================= */}
       <section id="services" className="section">
         <div className="container-page">
           <div className="flex flex-col justify-between gap-5 border-b border-border pb-8 sm:flex-row sm:items-end">
             <div>
-              <p className="text-eyebrow">What we look at</p>
-              <h2 className="mt-4 max-w-xl font-display text-h2 tracking-tight">
-                A grounded read of the spaces people actually use.
+              <p className="text-eyebrow text-olive">What the assessment covers</p>
+              <h2 className="mt-4 max-w-xl font-display text-h2 font-normal tracking-tight">
+                Four principles guide every review.
               </h2>
             </div>
             <p className="max-w-xs text-small text-muted-foreground sm:text-right">
-              For sites, buildings, public spaces, and the connections between them.
+              From a single retail unit to a multi-building residential compound.
             </p>
           </div>
-          <div className="mt-10 grid gap-0 border-l border-border">
-            {OBSERVATIONS.map(({ number, title, description, icon: Icon }) => (
-              <Card
-                key={number}
-                className="group rounded-none border-b border-r border-t-0 border-l-0 bg-card/70 shadow-none transition-colors duration-200 ease-out first:border-t hover:bg-accent/60"
-              >
-                <CardContent className="grid gap-6 p-6 sm:grid-cols-[4rem_minmax(9rem,0.55fr)_minmax(0,1fr)_auto] sm:items-center sm:p-8">
-                  <span className="font-mono text-caption font-semibold tracking-[0.16em] text-primary">
-                    {number}
-                  </span>
-                  <CardTitle className="flex items-center gap-3 font-display text-h4 tracking-tight">
-                    <Icon
-                      className="size-5 text-primary transition-transform duration-200 ease-out group-hover:scale-110"
-                      strokeWidth={1.5}
-                      aria-hidden
-                    />
-                    {title}
-                  </CardTitle>
-                  <p className="max-w-md text-body text-muted-foreground">{description}</p>
-                  <ArrowUpRight
-                    className="hidden size-5 text-primary/70 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:block"
-                    aria-hidden
-                  />
-                </CardContent>
-              </Card>
+          <div className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {SERVICES.map(({ number, label, title, description }) => (
+              <div key={number} className="border-l border-border pl-6 first:border-l-0 first:pl-0">
+                <span className="text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+                  {label}
+                </span>
+                <h3 className="mt-4 font-display text-h4 font-normal tracking-tight text-foreground">
+                  {title}
+                </h3>
+                <p className="mt-3 text-body text-muted-foreground">{description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="section pt-8 sm:pt-12">
+      {/* ================= PROCESS ================= */}
+      <section id="process" className="bg-primary text-primary-foreground">
+        <div className="container-page py-20 lg:py-28">
+          <div className="flex flex-col justify-between gap-5 border-b border-primary-foreground/15 pb-8 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-eyebrow text-primary-foreground/60">How an engagement runs</p>
+              <h2 className="mt-4 max-w-xl font-display text-h2 font-normal tracking-tight text-primary-foreground">
+                Four stages, each closed out with a written deliverable.
+              </h2>
+            </div>
+          </div>
+          <div className="mt-4 flex flex-col">
+            {PROCESS_STEPS.map((step) => (
+              <div
+                key={step.index}
+                className="grid gap-4 border-t border-primary-foreground/15 py-8 last:border-b sm:grid-cols-[5rem_1fr_1.4fr] sm:items-start sm:gap-8"
+              >
+                <span className="font-display text-h3 font-normal text-olive">{step.index}</span>
+                <h3 className="text-h4 font-display font-normal text-primary-foreground">
+                  {step.title}
+                </h3>
+                <p className="max-w-lg text-body text-primary-foreground/75">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SAMPLE WORK ================= */}
+      {featured && (
+        <section id="sample" className="section">
+          <div className="container-page grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
+            <div>
+              <p className="text-eyebrow text-olive">Sample report</p>
+              <h2 className="mt-4 max-w-md font-display text-h2 font-normal tracking-tight">
+                A report built to be acted on, not filed away.
+              </h2>
+              <p className="mt-6 max-w-md text-body-lg text-muted-foreground">
+                Every assessment is delivered as a single reference document — findings, plan
+                citations, and priority ordered so nothing gets lost between the design table and
+                the site.
+              </p>
+              <ul className="mt-8 max-w-md space-y-0 text-small">
+                {[
+                  ['Site and drawing set reviewed', 'Design stage'],
+                  ['Observations logged', 'Chronological'],
+                  ['Recommendations issued', 'Prioritized'],
+                ].map(([left, right]) => (
+                  <li
+                    key={left}
+                    className="flex items-center justify-between gap-6 border-t border-border py-3.5 last:border-b"
+                  >
+                    <span className="text-foreground">{left}</span>
+                    <span className="text-muted-foreground">{right}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button asChild variant="outline" size="lg" className="group mt-8">
+                <Link href={`/portfolio/${featured.slug}`}>
+                  Read the full assessment
+                  <ArrowUpRight
+                    className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                </Link>
+              </Button>
+            </div>
+
+            <Link href={`/portfolio/${featured.slug}`} className="group block">
+              <Card className="overflow-hidden shadow-none transition-colors duration-200 ease-out group-hover:bg-accent/60">
+                <div className="overflow-hidden">
+                  <Image
+                    src={featured.coverImage.src}
+                    alt={featured.coverImage.alt}
+                    width={featured.coverImage.width}
+                    height={featured.coverImage.height}
+                    className="h-72 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+                <CardContent className="space-y-2 p-6 sm:p-8">
+                  <Badge variant="outline" className="w-fit">
+                    {featured.location}
+                  </Badge>
+                  <p className="font-display text-h4 font-normal tracking-tight text-foreground">
+                    {featured.title}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* ================= CTA ================= */}
+      <section className="section pt-8 sm:pt-12">
         <div className="container-page">
           <div className="relative overflow-hidden bg-primary px-6 py-14 text-primary-foreground sm:px-12 sm:py-20 lg:px-20">
             <div className="pointer-events-none absolute -right-20 -top-28 size-80 rounded-full border-[3rem] border-primary-foreground/10" />
             <div className="pointer-events-none absolute bottom-0 right-20 h-24 w-px bg-primary-foreground/25" />
             <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-2xl">
-                <p className="text-caption font-semibold uppercase tracking-[0.18em] text-primary-foreground/70">
-                  Begin with a closer look
+                <p className="text-caption font-semibold uppercase tracking-[0.18em] text-olive">
+                  Begin while the drawings are still open to change
                 </p>
-                <h2 className="mt-5 font-display text-h1 tracking-tight">Have a place in mind?</h2>
+                <h2 className="mt-5 font-display text-h1 font-normal tracking-tight">
+                  Bring us in before anything is poured.
+                </h2>
                 <p className="mt-5 max-w-xl text-body-lg text-primary-foreground/80">
-                  Tell us what you are working on, where it is, and what you want people to
-                  experience there. We will start from the context.
+                  Send over your site plan or elevations and we'll scope the assessment before
+                  construction begins.
                 </p>
               </div>
               <Button asChild size="lg" variant="secondary" className="group w-fit">
                 <Link href="/contact">
-                  Start a consultation
+                  Start a conversation
                   <ArrowUpRight
                     className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     aria-hidden
@@ -234,11 +365,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex flex-col gap-4 py-8 text-small text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>Waymark Ember · Crime Prevention Through Environmental Design</p>
-            <div className="flex items-center gap-3">
-              <Separator className="w-10 sm:hidden" />
-              <span>Thoughtful places, safer days.</span>
-            </div>
+            <p>{siteName} · Crime Prevention Through Environmental Design</p>
+            <span>Detailed. Chronological. Professional.</span>
           </div>
         </div>
       </section>

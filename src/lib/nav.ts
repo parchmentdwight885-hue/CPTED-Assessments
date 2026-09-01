@@ -30,7 +30,8 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/', group: 'primary', order: 0 },
   { label: 'Our approach', href: '/#approach', group: 'primary', order: 1 },
-  { label: 'What we look at', href: '/#services', group: 'primary', order: 2 },
-  { label: 'Sample work', href: '/portfolio', group: 'primary', order: 3 },
-  { label: 'Start a conversation', href: '/contact', group: 'secondary', order: 0 },
+  { label: 'Services', href: '/#services', group: 'primary', order: 2 },
+  { label: 'Process', href: '/#process', group: 'primary', order: 3 },
+  { label: 'Sample work', href: '/portfolio', group: 'primary', order: 4 },
+  { label: 'Request an assessment', href: '/contact', group: 'secondary', order: 0 },
 ];

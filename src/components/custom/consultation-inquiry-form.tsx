@@ -1,4 +1,4 @@
-// @claude:user-owned — Waymark Ember's CPTED consultation inquiry island.
+// @claude:user-owned — CPTED consultation inquiry island.
 
 'use client';
 

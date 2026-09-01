@@ -1,8 +1,9 @@
 // @claude:user-owned — brand identity. Edit freely. `site.ts` re-exports
 // siteName/siteDescription; `manifest.ts` + `opengraph-image.tsx` read `brandVisual`.
 
-export const siteName = 'Waymark Ember';
-export const siteDescription = 'Safer places, designed with people in mind.';
+export const siteName = 'Thoughtful Design';
+export const siteDescription =
+  'CPTED design reviews that catch security gaps at the drawing board, before construction begins.';
 
 // Single source of truth for the public contact inbox — shown on the
 // consultation confirmation page and anywhere else a direct email is needed.
@@ -15,14 +16,14 @@ export const contactEmail = '119jannea@gmail.com';
 // readable here) — set to match your brand seed.
 export const brandVisual = {
   /** PWA browser-UI / status-bar color. */
-  themeColor: '#c45b32',
+  themeColor: '#1c305e',
   /** PWA splash + install background. */
-  backgroundColor: '#f8f4ee',
+  backgroundColor: '#f5f4ef',
   /** Social-share (OG/Twitter) image. */
   og: {
-    background: '#2b211c',
-    foreground: '#f8f4ee',
+    background: '#0c1a33',
+    foreground: '#f5f4ef',
     /** Second line under the site name; '' hides it. */
-    tagline: 'Safer places, designed with people in mind.',
+    tagline: 'Detailed. Chronological. Professional.',
   },
 } as const;

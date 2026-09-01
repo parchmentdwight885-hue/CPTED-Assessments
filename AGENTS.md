@@ -1,4 +1,4 @@
-# AGENTS.md — Claude's operating manual for Waymark Ember
+# AGENTS.md — Claude's operating manual for Thoughtful Design
 
 This file is the maintaining agent's contract for this codebase. Claude (via
 Claude Code, Claude Cowork, or chat) is the sole AI framework responsible for

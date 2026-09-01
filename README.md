@@ -1,6 +1,6 @@
-# Waymark Ember  
+# Thoughtful Design
 
-The Waymark Ember consultancy site — CPTED (Crime Prevention Through
+The Thoughtful Design consultancy site — CPTED (Crime Prevention Through
 Environmental Design) security consulting, built for prospects to learn the
 practice, request a consultation, and (eventually) preview a sample
 assessment before booking a full engagement.

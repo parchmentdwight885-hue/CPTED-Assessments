@@ -2,7 +2,7 @@
   "name": "waymark-ember",
   "version": "0.1.0",
   "private": true,
-  "description": "Waymark Ember — CPTED security consultancy site. Next.js + Prisma + Tailwind, maintained via Claude.",
+  "description": "Thoughtful Design — CPTED security consultancy site. Next.js + Prisma + Tailwind, maintained via Claude.",
   "engines": {
     "node": ">=20.18.1"
   },

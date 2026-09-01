@@ -125,12 +125,12 @@
    border role + dark mode from these (see the derived block below), so editing
    --brand-h ALONE recolors the entire site. Keep values in range. */
 :root {
-  --brand-h: 34; /* brand hue, 0–360 */
-  --brand-c: 0.16; /* brand chroma (saturation), 0–0.3 */
-  --brand-l: 0.57; /* lightness of the brand-500 step, 0.40–0.70 */
-  --radius: 0.25rem; /* corner roundness — cascades to every primitive */
+  --brand-h: 264; /* brand hue, 0–360 — deep navy-blue */
+  --brand-c: 0.085; /* brand chroma (saturation), 0–0.3 */
+  --brand-l: 0.4; /* lightness of the brand-500 step, 0.40–0.70 (floor, for the deepest achievable navy) */
+  --radius: 0rem; /* corner roundness — cascades to every primitive; sharp/architectural */
 
-  --font-display: "Inter", "ui-sans-serif", "system-ui", sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
   --font-body: "Inter", "ui-sans-serif", "system-ui", sans-serif;
 }
 /* === END claude-slot:brand_tokens === */

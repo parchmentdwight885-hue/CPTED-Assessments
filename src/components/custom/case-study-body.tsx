@@ -25,7 +25,7 @@ export function CaseStudyBody({ blocks }: { blocks: CaseStudyBlock[] }) {
             );
           case 'label':
             return (
-              <p key={key} className="text-eyebrow">
+              <p key={key} className="text-eyebrow text-olive">
                 {block.text}
               </p>
             );
