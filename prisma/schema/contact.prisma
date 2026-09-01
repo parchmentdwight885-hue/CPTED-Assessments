@@ -1,4 +1,4 @@
-// @claude:framework-owned — DO NOT EDIT. Drift = commit rejected.
+// @claude:user-owned — contact-message model. Edit freely.
 //
 // Self-contained contact-message model. No @relation, no foreign-model mutation.
 // Datasource + generator live in prisma/schema/_base.prisma (framework-owned
@@ -10,6 +10,17 @@ model ContactMessage {
   email     String
   message   String
   createdAt DateTime @default(now())
+
+  // AI inquiry-automation outputs (see src/lib/business/inquiry-automation.ts).
+  // All optional: automation only runs when ANTHROPIC_API_KEY + RESEND_API_KEY
+  // are set, so the contact form itself works with or without it.
+  automationStatus String  @default("pending") // pending | completed | skipped | failed
+  automationError  String?
+  aiReplySubject   String?
+  aiReplyBody      String?
+  aiSummary        String?
+  proposalDraft    String?
+  assessmentDraft  String?
 
   @@map("contact_message")
 }

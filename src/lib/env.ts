@@ -24,7 +24,20 @@ export const env = createEnv({
     // "Recurring Jobs".
     CRON_SECRET: z.string().optional(),
     // @claude:slot env_vars_server start
-    // Add server-side env vars here as features need them.
+    // Inquiry-automation pipeline (src/lib/business/inquiry-automation.ts).
+    // Both optional — when either is unset, the pipeline no-ops and the
+    // contact form keeps working without AI drafts or automated emails.
+    // Get a key at https://console.anthropic.com.
+    ANTHROPIC_API_KEY: z.string().optional(),
+    // Get a key at https://resend.com/api-keys.
+    RESEND_API_KEY: z.string().optional(),
+    // Sender address for automated emails — must be on a domain verified in
+    // Resend (https://resend.com/domains). Falls back to contactEmail
+    // (src/lib/brand.ts) if unset.
+    RESEND_FROM_EMAIL: z.string().email().optional(),
+    // Where the internal "new inquiry" alert email is sent. Falls back to
+    // contactEmail (src/lib/brand.ts) if unset.
+    INQUIRY_NOTIFICATION_EMAIL: z.string().email().optional(),
     // @claude:slot env_vars_server end
   },
 
@@ -45,7 +58,10 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     // @claude:slot env_runtime start
-    // Add runtime-env entries here as features need them.
+    ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
+    INQUIRY_NOTIFICATION_EMAIL: process.env.INQUIRY_NOTIFICATION_EMAIL,
     // @claude:slot env_runtime end
   },
   emptyStringAsUndefined: true,

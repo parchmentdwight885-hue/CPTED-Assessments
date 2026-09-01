@@ -6,8 +6,10 @@ export const siteDescription = 'Safer places, designed with people in mind.';
 
 // Single source of truth for the public contact inbox — shown on the
 // consultation confirmation page and anywhere else a direct email is needed.
-// TODO: replace with the real inbox before launch.
-export const contactEmail = 'hello@waymarkember.com';
+// Also the default reply-to / alert recipient for the inquiry-automation
+// pipeline (src/lib/business/inquiry-automation.ts) until RESEND_FROM_EMAIL /
+// INQUIRY_NOTIFICATION_EMAIL are set.
+export const contactEmail = '119jannea@gmail.com';
 
 // PWA + social-share colors. HEX only (the oklch() tokens in globals.css aren't
 // readable here) — set to match your brand seed.

@@ -6,6 +6,7 @@
 
 import 'server-only';
 import { NextResponse } from 'next/server';
+import { runInquiryAutomation } from '@/lib/business/inquiry-automation';
 import { contactSchema } from '@/lib/contact/schema';
 import { prisma } from '@/lib/db';
 
@@ -32,13 +33,19 @@ export async function POST(req: Request) {
     );
   }
 
+  let created: { id: string };
   try {
-    await prisma.contactMessage.create({ data: result.data });
-    return NextResponse.json({ ok: true }, { status: 201 });
+    created = await prisma.contactMessage.create({ data: result.data });
   } catch {
     return NextResponse.json(
       { errors: { message: 'Something went wrong. Please try again.' } },
       { status: 500 },
     );
   }
+
+  // Never lets an AI/email-provider failure affect the response below — the
+  // inquiry is already saved. See src/lib/business/inquiry-automation.ts.
+  await runInquiryAutomation({ id: created.id, ...result.data });
+
+  return NextResponse.json({ ok: true }, { status: 201 });
 }
