@@ -5,6 +5,7 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ProcessAccordion } from '@/components/custom/process-accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -48,41 +49,6 @@ const SERVICES = [
     title: 'Better spaces, stronger communities',
     description:
       "The goal isn't a longer perimeter fence — it's natural surveillance and access control that residents barely notice.",
-  },
-] as const;
-
-const PROCESS_STEPS = [
-  {
-    index: '01',
-    stage: 1,
-    title: 'Design review',
-    description:
-      'We read the site plan and elevations against CPTED principles and flag risk areas before groundwork begins.',
-    deliverable: 'Design-stage CPTED memo',
-  },
-  {
-    index: '02',
-    stage: 2,
-    title: 'Site assessment',
-    description:
-      'For existing properties, a walk-through documents current sightlines, access control, and lighting against the plan.',
-    deliverable: 'Site assessment field notes',
-  },
-  {
-    index: '03',
-    stage: 3,
-    title: 'Report and recommendations',
-    description:
-      'A chronological, plan-referenced report sets out findings and prioritized changes for the design or property team.',
-    deliverable: 'CPTED assessment report',
-  },
-  {
-    index: '04',
-    stage: 4,
-    title: 'Implementation support',
-    description:
-      "We review revised drawings or completed works against the original recommendations and confirm they've been addressed.",
-    deliverable: 'Verification & sign-off letter',
   },
 ] as const;
 
@@ -144,179 +110,6 @@ function HeroMark() {
         <polygon points="292,378 292,210 345,178 345,378" fill="var(--color-olive)" />
         <polygon points="345,210 345,178 375,196 345,231" fill="var(--color-olive)" opacity="0.8" />
       </g>
-    </svg>
-  );
-}
-
-/** Small conceptual diagrams for each stage of the process timeline. Kept in
- * the same visual language as HeroMark (thin strokes, olive accent, theme
- * tokens) but rendered on the primary (navy) section background, so strokes
- * lean on --color-primary-foreground instead of --color-border/foreground. */
-function ProcessIcon({ stage }: { stage: 1 | 2 | 3 | 4 }) {
-  const common = {
-    viewBox: '0 0 56 56',
-    className: 'size-11 shrink-0',
-    role: 'img' as const,
-  };
-
-  if (stage === 1) {
-    // Design review — a dashed site boundary, a massed footprint, and a
-    // sightline resolving to a single viewpoint.
-    return (
-      <svg {...common} aria-label="A site plan reviewed against a sightline before construction">
-        <title>Site plan reviewed against a sightline</title>
-        <rect
-          x="6"
-          y="6"
-          width="44"
-          height="44"
-          fill="none"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.35"
-          strokeWidth="1.25"
-          strokeDasharray="3 3"
-        />
-        <rect x="14" y="26" width="18" height="18" fill="var(--color-olive)" opacity="0.85" />
-        <path
-          d="M 32 14 L 46 28"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.6"
-          strokeWidth="1.25"
-          strokeDasharray="1 4"
-          strokeLinecap="round"
-        />
-        <circle cx="46" cy="28" r="2.5" fill="var(--color-primary-foreground)" />
-      </svg>
-    );
-  }
-
-  if (stage === 2) {
-    // Site assessment — a walked route between waypoints, ending at a
-    // location marker on the property.
-    return (
-      <svg {...common} aria-label="A walked route between waypoints, ending at a site marker">
-        <title>A walked route ending at a site marker</title>
-        <path
-          d="M 8 42 Q 16 30 14 20 T 28 8"
-          fill="none"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.5"
-          strokeWidth="1.5"
-          strokeDasharray="1 5"
-          strokeLinecap="round"
-        />
-        <circle cx="8" cy="42" r="2.25" fill="var(--color-primary-foreground)" fillOpacity="0.7" />
-        <circle cx="14" cy="20" r="2.25" fill="var(--color-primary-foreground)" fillOpacity="0.7" />
-        <path
-          d="M28 4c-4.4 0-8 3.4-8 7.7 0 5.8 8 14.3 8 14.3s8-8.5 8-14.3C36 7.4 32.4 4 28 4z"
-          fill="var(--color-olive)"
-        />
-        <circle cx="28" cy="11.5" r="3" fill="var(--color-primary)" />
-      </svg>
-    );
-  }
-
-  if (stage === 3) {
-    // Report and recommendations — a folded-corner document with findings
-    // logged as lines, the top-priority one flagged in olive.
-    return (
-      <svg {...common} aria-label="A document listing findings, with the top priority flagged">
-        <title>A document listing findings, top priority flagged</title>
-        <path
-          d="M14 6h20l8 8v36H14z"
-          fill="none"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.4"
-          strokeWidth="1.25"
-        />
-        <path
-          d="M34 6v8h8"
-          fill="none"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.4"
-          strokeWidth="1.25"
-        />
-        <line
-          x1="20"
-          y1="26"
-          x2="40"
-          y2="26"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.5"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <line
-          x1="20"
-          y1="33"
-          x2="40"
-          y2="33"
-          stroke="var(--color-primary-foreground)"
-          strokeOpacity="0.5"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <line
-          x1="23"
-          y1="40"
-          x2="35"
-          y2="40"
-          stroke="var(--color-olive)"
-          strokeWidth="1.75"
-          strokeLinecap="round"
-        />
-        <circle cx="17" cy="40" r="1.75" fill="var(--color-olive)" />
-      </svg>
-    );
-  }
-
-  // stage === 4 — Implementation support — a checklist of verified items,
-  // the final one confirmed (solid) as the sign-off.
-  return (
-    <svg {...common} aria-label="A checklist of verified items, the last one signed off">
-      <title>A checklist of verified items, signed off</title>
-      <rect
-        x="10"
-        y="8"
-        width="30"
-        height="40"
-        fill="none"
-        stroke="var(--color-primary-foreground)"
-        strokeOpacity="0.4"
-        strokeWidth="1.25"
-      />
-      {[16, 26, 36].map((y, i) => (
-        <g key={y}>
-          <rect
-            x="16"
-            y={y}
-            width="6"
-            height="6"
-            fill={i === 2 ? 'var(--color-olive)' : 'none'}
-            stroke={i === 2 ? 'none' : 'var(--color-primary-foreground)'}
-            strokeOpacity="0.6"
-            strokeWidth="1.25"
-          />
-          <path
-            d={`M17 ${y + 3}l1.5 1.5L21 ${y + 1.5}`}
-            stroke={i === 2 ? 'var(--color-primary)' : 'var(--color-primary-foreground)'}
-            strokeOpacity={i === 2 ? '1' : '0.8'}
-            strokeWidth="1.25"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <line
-            x1="27"
-            y1={y + 3}
-            x2="34"
-            y2={y + 3}
-            stroke="var(--color-primary-foreground)"
-            strokeOpacity="0.35"
-            strokeWidth="1.25"
-          />
-        </g>
-      ))}
     </svg>
   );
 }
@@ -433,31 +226,7 @@ export default function HomePage() {
               </h2>
             </div>
           </div>
-          <div className="mt-4 flex flex-col">
-            {PROCESS_STEPS.map((step) => (
-              <div
-                key={step.index}
-                className="grid gap-6 border-t border-primary-foreground/15 py-8 last:border-b sm:grid-cols-[5.5rem_1fr_1.2fr_1.1fr] sm:items-start sm:gap-8"
-              >
-                <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-4">
-                  <ProcessIcon stage={step.stage} />
-                  <span className="font-display text-h3 font-normal text-olive">{step.index}</span>
-                </div>
-                <h3 className="text-h4 font-display font-normal text-primary-foreground">
-                  {step.title}
-                </h3>
-                <p className="max-w-lg text-body text-primary-foreground/75">{step.description}</p>
-                <div className="flex flex-col gap-1.5 border-t border-primary-foreground/15 pt-4 sm:border-t-0 sm:border-l sm:pl-6 sm:pt-0">
-                  <span className="text-caption font-semibold uppercase tracking-[0.08em] text-primary-foreground/45">
-                    Written deliverable
-                  </span>
-                  <span className="text-small font-medium text-primary-foreground">
-                    {step.deliverable}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProcessAccordion />
         </div>
       </section>
 
