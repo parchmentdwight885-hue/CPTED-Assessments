@@ -215,6 +215,60 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ================= MISSION & VISION ================= */}
+      <section id="mission" className="border-y border-border bg-muted/35">
+        <div className="container-page py-20 lg:py-28">
+          <div className="max-w-2xl">
+            <p className="text-eyebrow text-olive">Why this work matters</p>
+            <h2 className="mt-4 font-display text-h2 font-normal tracking-tight">
+              Mission &amp; vision
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <span className="text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+                Mission
+              </span>
+              <div className="mt-4 space-y-4 text-body-lg text-muted-foreground">
+                <p>
+                  We make properties safer by design, not by afterthought. Each assessment measures
+                  a site&apos;s layout, sightlines, lighting, and points of access against four
+                  established CPTED principles: natural surveillance, access control, territorial
+                  reinforcement, and maintenance.
+                </p>
+                <p>
+                  Findings are recorded in detail, referenced to the specific drawing or elevation
+                  they concern, and sequenced chronologically so a design team can work through them
+                  in the order the project requires.
+                </p>
+                <p className="text-foreground">
+                  Every recommendation exists to protect the people who will ultimately live, work,
+                  and move through that space — a responsibility we hold as central to the work, not
+                  incidental to it.
+                </p>
+              </div>
+            </div>
+            <div className="lg:border-l lg:border-border lg:pl-16">
+              <span className="text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+                Vision
+              </span>
+              <div className="mt-4 space-y-4 text-body-lg text-muted-foreground">
+                <p>
+                  We&apos;re working toward a standard where CPTED review is as routine to a project
+                  as a structural engineer&apos;s sign-off — never an afterthought added once the
+                  building is finished, but a discipline built into the process from the start.
+                </p>
+                <p className="text-foreground">
+                  The measure of good design, in the end, is not the drawing itself but the
+                  confidence and security it gives the people who occupy the finished space. That is
+                  the standard we hold every engagement to.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= PROCESS ================= */}
       <section id="process" className="bg-primary text-primary-foreground">
         <div className="container-page py-20 lg:py-28">
