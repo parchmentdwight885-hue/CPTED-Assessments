@@ -10,7 +10,11 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { CaseStudyBody } from '@/components/custom/case-study-body';
-import { PlanPhoto, ShieldMark } from '@/components/custom/process-illustrations';
+import {
+  PlanPhoto,
+  ShieldMark,
+  SiteWalkthroughVideo,
+} from '@/components/custom/process-illustrations';
 import {
   Accordion,
   AccordionContent,
@@ -32,6 +36,14 @@ const SITE_IMAGE = {
   width: 281,
   height: 512,
 } as const;
+
+/** Paste a YouTube or Vimeo *embed* URL here once a real site-walkthrough
+ * clip exists — e.g. https://www.youtube.com/embed/VIDEO_ID (from that
+ * video's Share → Embed panel, not the regular watch link) or
+ * https://player.vimeo.com/video/VIDEO_ID. Leave undefined and the
+ * site-assessment stage shows a "coming soon" placeholder instead. See
+ * SiteWalkthroughVideo in process-illustrations.tsx. */
+const SITE_WALKTHROUGH_VIDEO_URL: string | undefined = undefined;
 
 /** Pull the blocks between two headings (inclusive of the start heading,
  * exclusive of the end heading) out of a case study's write-up, so the
@@ -410,6 +422,18 @@ export function ProcessAccordion() {
                 </p>
                 <div className="mt-5">
                   <CaseStudyBody blocks={FINDINGS_BLOCKS} />
+                </div>
+                <div className="mt-8">
+                  <p className="text-eyebrow text-olive">Site walkthrough</p>
+                  <p className="mt-2 text-body text-muted-foreground">
+                    A video walkthrough of the physical site, recorded during the assessment visit.
+                  </p>
+                  <div className="mt-4">
+                    <SiteWalkthroughVideo
+                      videoUrl={SITE_WALKTHROUGH_VIDEO_URL}
+                      title="Site assessment walkthrough — 5-Story Luxury Beachfront Condominium, Grand Cayman"
+                    />
+                  </div>
                 </div>
               </StagePanel>
             )}

@@ -3,7 +3,8 @@
 // crops taken from the client's own concept board (see
 // public/assets/portfolio/beachfront-condominium/) rather than illustrated
 // or generated imagery. ShieldMark is a small brand mark used on the sample
-// report page.
+// report page. SiteWalkthroughVideo is an embed slot for a future walkthrough
+// clip, with a styled placeholder until one is wired up.
 
 import Image from 'next/image';
 
@@ -65,5 +66,45 @@ export function ShieldMark({ className }: { className?: string }) {
       <rect x="18" y="20" width="4" height="16" fill="var(--color-primary)" />
       <rect x="23.5" y="24" width="4" height="12" fill="var(--color-olive)" />
     </svg>
+  );
+}
+
+/** A 16:9 video slot for a process stage. Pass a `videoUrl` — a YouTube or
+ * Vimeo *embed* URL (e.g. https://www.youtube.com/embed/VIDEO_ID, from that
+ * video's Share → Embed panel, not the regular watch/share link; or
+ * https://player.vimeo.com/video/VIDEO_ID) — once a walkthrough clip exists.
+ * Hosting the clip externally like this keeps large video files out of the
+ * git repo entirely, rather than uploading them alongside the source code.
+ * Until a `videoUrl` is set this renders a styled placeholder instead of a
+ * broken or empty space. */
+export function SiteWalkthroughVideo({ videoUrl, title }: { videoUrl?: string; title: string }) {
+  if (!videoUrl) {
+    return (
+      <div
+        className="flex aspect-video w-full flex-col items-center justify-center gap-3 border border-dashed border-border bg-muted/30 px-6 text-center"
+        role="img"
+        aria-label="Video walkthrough placeholder — not yet added"
+      >
+        <svg viewBox="0 0 48 48" className="size-9 text-muted-foreground/60" aria-hidden="true">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M20 16.5 L32 24 L20 31.5 Z" fill="currentColor" />
+        </svg>
+        <p className="text-caption font-semibold uppercase tracking-[0.08em] text-muted-foreground">
+          Video walkthrough — coming soon
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="aspect-video w-full overflow-hidden border border-border bg-black">
+      <iframe
+        src={videoUrl}
+        title={title}
+        className="h-full w-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
   );
 }
