@@ -24,31 +24,31 @@ export const metadata: Metadata = {
 const SERVICES = [
   {
     number: '01',
-    label: 'Design stage',
-    title: 'Reviewed before construction',
+    label: 'Armed guards',
+    title: 'Elevated deterrence and response',
     description:
-      'Sightlines, entry points, and lighting plans are assessed on paper, while changes still cost a redline instead of a renovation.',
+      'Licensed, firearm-certified officers posted where the risk profile calls for a stronger deterrent and a faster response.',
   },
   {
     number: '02',
-    label: 'Chronological',
-    title: 'A dated record, start to finish',
+    label: 'Unarmed guards',
+    title: 'Day-to-day access and presence',
     description:
-      'Every observation is logged against the stage it applies to, so the report reads as a timeline the design team can act on in order.',
+      'Professional, customer-facing officers staffing access control, patrols, and front-desk or gate posts.',
   },
   {
     number: '03',
-    label: 'Detailed',
-    title: 'Findings tied to plan references',
+    label: 'Coverage',
+    title: 'Scheduled, 24/7, or event-based',
     description:
-      'Each recommendation cites the specific drawing, elevation, or zone it concerns — no generic checklist language.',
+      'Staffing scaled to the hours and risk profile of your site — a single shift, round-the-clock coverage, or a one-time event.',
   },
   {
     number: '04',
-    label: 'Outcome',
-    title: 'Better spaces, stronger communities',
+    label: 'Deployment',
+    title: 'Posts placed by design, not guesswork',
     description:
-      "The goal isn't a longer perimeter fence — it's natural surveillance and access control that residents barely notice.",
+      'Guard posts and patrol routes informed by the same CPTED principles behind our design-consulting line.',
   },
 ] as const;
 
@@ -74,7 +74,7 @@ function HeroMark() {
       <path
         d="M 235 14 A 225 225 0 0 1 235 464"
         fill="none"
-        stroke="var(--color-olive)"
+        stroke="var(--color-gold)"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeDasharray="0.5 12"
@@ -107,8 +107,8 @@ function HeroMark() {
           fill="var(--color-muted-foreground)"
           opacity="0.8"
         />
-        <polygon points="292,378 292,210 345,178 345,378" fill="var(--color-olive)" />
-        <polygon points="345,210 345,178 375,196 345,231" fill="var(--color-olive)" opacity="0.8" />
+        <polygon points="292,378 292,210 345,178 345,378" fill="var(--color-gold)" />
+        <polygon points="345,210 345,178 375,196 345,231" fill="var(--color-gold)" opacity="0.8" />
       </g>
     </svg>
   );
@@ -123,21 +123,22 @@ export default function HomePage() {
       <section className="section-lg relative">
         <div className="container-page relative grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16">
           <div className="max-w-2xl animate-in fade-in slide-in-from-bottom-3 duration-700">
-            <div className="mb-6 flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.18em] text-olive">
-              <span className="h-px w-6 bg-olive" />
-              CPTED consultancy
+            <div className="mb-6 flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.18em] text-gold">
+              <span className="h-px w-6 bg-gold" />
+              Armed &amp; unarmed guard services
             </div>
             <h1 className="font-display text-h1 font-normal leading-[1.08] tracking-tight text-foreground sm:text-[3.4rem]">
-              Security reviewed at the drawing board, not after the ribbon cutting.
+              Professional security guards, backed by a design-trained eye.
             </h1>
             <p className="mt-7 max-w-lg text-body-lg text-muted-foreground">
-              We assess layout, sightlines, and access before a single wall goes up — so the
-              finished property is safer by design, not by afterthought.
+              {siteName} staffs licensed armed and unarmed officers for properties, communities, and
+              events — a visible, reliable presence from a team that also understands how a site is
+              built to be secured.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
-                  Request an assessment
+                  Request guard coverage
                   <ArrowUpRight
                     className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                     aria-hidden
@@ -145,7 +146,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/portfolio">View a sample report</Link>
+                <Link href="/#consulting">Design consulting</Link>
               </Button>
             </div>
           </div>
@@ -159,27 +160,27 @@ export default function HomePage() {
       <section id="approach" className="border-y border-border bg-muted/35">
         <div className="container-page grid gap-12 py-20 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24 lg:py-28">
           <div>
-            <p className="text-eyebrow text-olive">The {siteName} lens</p>
+            <p className="text-eyebrow text-gold">The {siteName} approach</p>
             <h2 className="mt-4 max-w-md font-display text-h2 font-normal tracking-tight">
-              Security is not separate from how a place feels.
+              Trained presence, paired with a trained eye for design.
             </h2>
           </div>
           <div className="max-w-2xl space-y-6 text-body-lg text-muted-foreground">
             <p>
-              A locked gate, a dark corner, an unclear entrance, or a neglected edge can change how
-              people use a place long before an incident occurs. We look at those everyday signals
-              with a security-aware, people-first eye.
+              A visible, professional officer is the first line of protection for any property — but
+              where and how that post is placed matters just as much as who is staffing it. We
+              assign guards and patrol routes with that in mind.
             </p>
             <p>
-              Led by Dwight Parchment, whose frontline experience as a security officer grounds the
-              practice in real-world awareness, {siteName} makes established CPTED principles
-              accessible and actionable.
+              Led by Dwight Parchment, whose frontline experience as a security officer shapes how
+              we train and deploy guards, {siteName} pairs licensed armed and unarmed staffing with
+              the same CPTED principles behind our design-consulting line.
             </p>
             <div className="flex items-center gap-3 pt-3 text-small font-medium text-foreground">
               <span className="flex size-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
                 <Check className="size-4" aria-hidden />
               </span>
-              Clear reporting. Ethical practice. Better everyday places.
+              Licensed officers. Reliable coverage. Security built in from the start.
             </div>
           </div>
         </div>
@@ -190,19 +191,19 @@ export default function HomePage() {
         <div className="container-page">
           <div className="flex flex-col justify-between gap-5 border-b border-border pb-8 sm:flex-row sm:items-end">
             <div>
-              <p className="text-eyebrow text-olive">What the assessment covers</p>
+              <p className="text-eyebrow text-gold">Guard services</p>
               <h2 className="mt-4 max-w-xl font-display text-h2 font-normal tracking-tight">
-                Four principles guide every review.
+                Armed and unarmed coverage, staffed to the site.
               </h2>
             </div>
             <p className="max-w-xs text-small text-muted-foreground sm:text-right">
-              From a single retail unit to a multi-building residential compound.
+              From a single storefront to a multi-building residential community.
             </p>
           </div>
           <div className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {SERVICES.map(({ number, label, title, description }) => (
               <div key={number} className="border-l border-border pl-6 first:border-l-0 first:pl-0">
-                <span className="text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+                <span className="text-caption font-semibold uppercase tracking-[0.08em] text-gold">
                   {label}
                 </span>
                 <h3 className="mt-4 font-display text-h4 font-normal tracking-tight text-foreground">
@@ -219,49 +220,46 @@ export default function HomePage() {
       <section id="mission" className="border-y border-border bg-muted/35">
         <div className="container-page py-20 lg:py-28">
           <div className="max-w-2xl">
-            <p className="text-eyebrow text-olive">Why this work matters</p>
+            <p className="text-eyebrow text-gold">Why this work matters</p>
             <h2 className="mt-4 font-display text-h2 font-normal tracking-tight">
               Mission &amp; vision
             </h2>
           </div>
           <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <span className="text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+              <span className="text-caption font-semibold uppercase tracking-[0.08em] text-gold">
                 Mission
               </span>
               <div className="mt-4 space-y-4 text-body-lg text-muted-foreground">
                 <p>
-                  We make properties safer by design, not by afterthought. Each assessment measures
-                  a site&apos;s layout, sightlines, lighting, and points of access against four
-                  established CPTED principles: natural surveillance, access control, territorial
-                  reinforcement, and maintenance.
+                  {siteName} exists to put reliable, professional officers — armed and unarmed — on
+                  the properties and events that need them, so owners, residents, and guests are
+                  protected around the clock.
                 </p>
                 <p>
-                  Findings are recorded in detail, referenced to the specific drawing or elevation
-                  they concern, and sequenced chronologically so a design team can work through them
-                  in the order the project requires.
+                  Every officer we staff is trained, licensed, and held to a clear standard of
+                  conduct, and every post is scheduled and supervised so coverage never has a gap.
                 </p>
                 <p className="text-foreground">
-                  Every recommendation exists to protect the people who will ultimately live, work,
+                  Every post we staff exists to protect the people who will ultimately live, work,
                   and move through that space — a responsibility we hold as central to the work, not
                   incidental to it.
                 </p>
               </div>
             </div>
             <div className="lg:border-l lg:border-border lg:pl-16">
-              <span className="text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+              <span className="text-caption font-semibold uppercase tracking-[0.08em] text-gold">
                 Vision
               </span>
               <div className="mt-4 space-y-4 text-body-lg text-muted-foreground">
                 <p>
-                  We&apos;re working toward a standard where CPTED review is as routine to a project
-                  as a structural engineer&apos;s sign-off — never an afterthought added once the
-                  building is finished, but a discipline built into the process from the start.
+                  We&apos;re working toward being a security partner that offers more than headcount
+                  — guard staffing backed by the same design-stage thinking that keeps a site safer
+                  before an officer ever needs to act.
                 </p>
                 <p className="text-foreground">
-                  The measure of good design, in the end, is not the drawing itself but the
-                  confidence and security it gives the people who occupy the finished space. That is
-                  the standard we hold every engagement to.
+                  A strong guard presence and a well-designed site aren&apos;t separate disciplines
+                  to us — together, they&apos;re the standard we hold every engagement to.
                 </p>
               </div>
             </div>
@@ -269,15 +267,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= PROCESS ================= */}
-      <section id="process" className="bg-primary text-primary-foreground">
+      {/* ================= DESIGN CONSULTING (secondary service) ================= */}
+      <section id="consulting" className="bg-primary text-primary-foreground">
         <div className="container-page py-20 lg:py-28">
           <div className="flex flex-col justify-between gap-5 border-b border-primary-foreground/15 pb-8 sm:flex-row sm:items-end">
             <div>
-              <p className="text-eyebrow text-primary-foreground/60">How an engagement runs</p>
+              <p className="text-eyebrow text-primary-foreground/60">
+                Also available — design consulting
+              </p>
               <h2 className="mt-4 max-w-xl font-display text-h2 font-normal tracking-tight text-primary-foreground">
-                Four stages, each closed out with a written deliverable.
+                CPTED reviews, for clients who want security considered before anything is built.
               </h2>
+              <p className="mt-5 max-w-2xl text-body-lg text-primary-foreground/80">
+                {`Alongside guard staffing, ${siteName} offers CPTED-informed design consulting — reviewing layout, sightlines, lighting, and access before a design is finalized. It's a secondary service for clients who want security built into the plans themselves, closed out with a written deliverable at each stage.`}
+              </p>
             </div>
           </div>
           <ProcessAccordion />
@@ -289,14 +292,14 @@ export default function HomePage() {
         <section id="sample" className="section">
           <div className="container-page grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
             <div>
-              <p className="text-eyebrow text-olive">Sample report</p>
+              <p className="text-eyebrow text-gold">Design consulting — sample work</p>
               <h2 className="mt-4 max-w-md font-display text-h2 font-normal tracking-tight">
                 A report built to be acted on, not filed away.
               </h2>
               <p className="mt-6 max-w-md text-body-lg text-muted-foreground">
-                Every assessment is delivered as a single reference document — findings, plan
-                citations, and priority ordered so nothing gets lost between the design table and
-                the site.
+                Every design-consulting assessment is delivered as a single reference document —
+                findings, plan citations, and priority ordered so nothing gets lost between the
+                design table and the site.
               </p>
               <ul className="mt-8 max-w-md space-y-0 text-small">
                 {[
@@ -357,15 +360,15 @@ export default function HomePage() {
             <div className="pointer-events-none absolute bottom-0 right-20 h-24 w-px bg-primary-foreground/25" />
             <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-2xl">
-                <p className="text-caption font-semibold uppercase tracking-[0.18em] text-olive">
-                  Begin while the drawings are still open to change
+                <p className="text-caption font-semibold uppercase tracking-[0.18em] text-gold">
+                  Begin with guard coverage, or start a design review
                 </p>
                 <h2 className="mt-5 font-display text-h1 font-normal tracking-tight">
-                  Bring us in before anything is poured.
+                  Put trained officers on site — and build security into the plans.
                 </h2>
                 <p className="mt-5 max-w-xl text-body-lg text-primary-foreground/80">
-                  Send over your site plan or elevations and we'll scope the assessment before
-                  construction begins.
+                  Tell us about your property or event and we&apos;ll scope the right mix of guard
+                  staffing and, if you need it, a design-stage review.
                 </p>
               </div>
               <Button asChild size="lg" variant="secondary" className="group w-fit">
@@ -380,8 +383,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex flex-col gap-4 py-8 text-small text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>{siteName} · Crime Prevention Through Environmental Design</p>
-            <span>Detailed. Chronological. Professional.</span>
+            <p>{siteName} · Armed &amp; Unarmed Guard Services · Design Consulting</p>
+            <span>Licensed. Reliable. Security-minded by design.</span>
           </div>
         </div>
       </section>

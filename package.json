@@ -1,8 +1,8 @@
 {
-  "name": "waymark-ember",
+  "name": "genisis-security-services",
   "version": "0.1.0",
   "private": true,
-  "description": "Thoughtful Design — CPTED security consultancy site. Next.js + Prisma + Tailwind, maintained via Claude.",
+  "description": "Genisis Security Services — licensed armed and unarmed guard services, plus CPTED design consulting. Next.js + Prisma + Tailwind, maintained via Claude.",
   "engines": {
     "node": ">=20.18.1"
   },

@@ -6,9 +6,12 @@
 //   1. A personalized reply email to the inquirer (sent automatically).
 //   2. A short internal summary (emailed to Dwight as an alert).
 //   3. A proposal / scope-of-work draft, for Dwight to edit before sending —
-//      this is never sent to the client automatically.
+//      this is never sent to the client automatically. Covers a guard-
+//      staffing quote, a CPTED consulting engagement, or both, depending on
+//      what the inquiry describes.
 //   4. A preliminary CPTED write-up (visibility / movement / care+activity),
-//      for Dwight to review and refine — also never auto-sent.
+//      for Dwight to review and refine — only produced when the inquiry
+//      actually raises a design-consulting question; also never auto-sent.
 // Drafts 2-4 are emailed to Dwight in one alert message and stored on the
 // row so they're not lost even if the email fails.
 //
@@ -82,12 +85,15 @@ async function draftWithClaude(inquiry: Inquiry): Promise<InquiryDrafts> {
   const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
 
   const system =
-    `You are the intake assistant for ${siteName}, a CPTED (Crime Prevention ` +
-    'Through Environmental Design) security consultancy run by a professional ' +
-    'security consultant. You draft materials for the consultant to review — ' +
-    'never claim anything is final, priced, scheduled, or promised on the ' +
-    "consultant's behalf. Write in a warm, plain-spoken, professional tone. " +
-    'No sales hype, no fear-mongering, no emojis.';
+    `You are the intake assistant for ${siteName}, a licensed security ` +
+    'company whose primary business is staffing armed and unarmed security ' +
+    'guards for properties, communities, and events. As a secondary line of ' +
+    'business, the same team also offers CPTED (Crime Prevention Through ' +
+    'Environmental Design) design-stage consulting. You draft materials for ' +
+    'the owner to review — never claim anything is final, priced, ' +
+    "scheduled, staffed, or promised on the owner's behalf. Write in a " +
+    'warm, plain-spoken, professional tone. No sales hype, no ' +
+    'fear-mongering, no emojis.';
 
   const prompt = `A prospective client submitted this inquiry through the ${siteName} website contact form:
 
@@ -104,16 +110,16 @@ REPLY_SUBJECT:
 A short, warm email subject line acknowledging their inquiry.
 
 REPLY_BODY:
-A personalized reply email (plain text, ready to send as-is) that thanks them by name, reflects back the specific situation they described, sets the expectation that a security consultant will personally follow up soon with next steps, and is signed "The ${siteName} Team". Do not invent pricing, dates, or commitments the consultant hasn't made.
+A personalized reply email (plain text, ready to send as-is) that thanks them by name, reflects back the specific situation they described, sets the expectation that someone from ${siteName} will personally follow up soon with next steps — whether that's guard coverage, a design consultation, or both — and is signed "The ${siteName} Team". Do not invent pricing, dates, staffing levels, or commitments that haven't been made.
 
 INTERNAL_SUMMARY:
-2-4 sentences for the consultant: who this is, what they're asking for, and anything urgent or notable.
+2-4 sentences for the owner: who this is, whether they're asking about guard staffing, design consulting, or both, and anything urgent or notable.
 
 PROPOSAL_DRAFT:
-A draft scope-of-work / proposal outline the consultant can edit before sending to the client. Include a one-line project understanding, a list of a plausible engagement scope based on what was described (each item on its own line starting with "- "), and a final line reading exactly "[Consultant to add pricing and timeline]". Do not invent specific dollar amounts or dates.
+A draft scope-of-work / proposal outline the owner can edit before sending to the client. Lead with guard staffing if the inquiry mentions it (coverage type — armed/unarmed/both — hours, and site type), and include a CPTED design-consulting line only if the inquiry raises a design-stage question. Include a one-line understanding of the request, a list of a plausible engagement scope based on what was described (each item on its own line starting with "- "), and a final line reading exactly "[Owner to add pricing and timeline]". Do not invent specific dollar amounts, dates, or staffing counts.
 
 ASSESSMENT_DRAFT:
-A preliminary CPTED write-up for internal review, organized under exactly these three lines (each on its own line, followed by a colon): "Visibility (natural surveillance):", "Movement (natural access control):", "Care & activity (territorial reinforcement / maintenance):". Under each, 2-3 sentences of preliminary observations or open questions based only on what the inquiry describes, and note this is a draft pending an on-site assessment.`;
+Only if the inquiry raises a design-stage or CPTED question: a preliminary write-up for internal review, organized under exactly these three lines (each on its own line, followed by a colon): "Visibility (natural surveillance):", "Movement (natural access control):", "Care & activity (territorial reinforcement / maintenance):". Under each, 2-3 sentences of preliminary observations or open questions based only on what the inquiry describes, and note this is a draft pending an on-site assessment. If the inquiry is purely about guard staffing with no design-stage question, write exactly: "Not applicable — this inquiry is about guard staffing, not design consulting."`;
 
   const response = await anthropic.messages.create({
     model: MODEL,

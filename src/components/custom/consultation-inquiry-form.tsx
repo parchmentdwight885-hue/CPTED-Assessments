@@ -1,4 +1,4 @@
-// @claude:user-owned — CPTED consultation inquiry island.
+// @claude:user-owned — guard-coverage & consultation inquiry island.
 
 'use client';
 
@@ -18,20 +18,20 @@ export function ConsultationInquiryForm() {
           <div className="max-w-xl animate-in fade-in slide-in-from-bottom-3 duration-700">
             <div className="mb-8 flex items-center gap-3 text-caption font-semibold uppercase tracking-[0.18em] text-primary">
               <span className="h-px w-10 bg-primary" />
-              Consultation inquiry
+              Guard coverage &amp; consulting inquiry
             </div>
             <h1 className="font-display text-[clamp(3.2rem,7vw,6.5rem)] font-semibold leading-[0.94] tracking-[-0.06em]">
-              Start with the place.
+              Start with the site.
             </h1>
             <p className="mt-8 max-w-lg text-body-lg text-muted-foreground">
-              Give us the first contours of the space, project, or question you are carrying. We
-              will reply with a thoughtful next step for a CPTED consultation.
+              Tell us about the property or event you need covered — armed, unarmed, or both — or
+              the design-stage question you are carrying. We will reply with a thoughtful next step.
             </p>
             <div className="mt-10 border-l-2 border-primary/30 pl-5 text-small text-muted-foreground">
               <p className="font-medium text-foreground">A useful brief can be simple.</p>
               <p className="mt-1 max-w-sm">
-                Tell us who you are, where the site is, what is changing, and what you want people
-                to experience there.
+                Tell us who you are, where the site is, what coverage or hours you need, and whether
+                a design-stage review is also of interest.
               </p>
             </div>
           </div>
@@ -54,10 +54,10 @@ export function ConsultationInquiryForm() {
             </CardHeader>
             <CardContent className="p-6 sm:p-8">
               <ContactForm
-                messageLabel="Tell us about the site or project"
-                messagePlaceholder="Include your organization, site or location, what is changing, and the safety or experience question you want to explore."
+                messageLabel="Tell us about the site, coverage, or project"
+                messagePlaceholder="Include your organization, site or location, the guard coverage or hours you need (armed, unarmed, or both), and whether you'd also like a design-stage CPTED review."
                 namePlaceholder="Your name"
-                submitLabel="Send consultation inquiry"
+                submitLabel="Send inquiry"
                 onSuccess={() => router.push('/contact/confirmation')}
               />
               <p className="mt-4 text-center text-caption text-muted-foreground">
@@ -71,11 +71,11 @@ export function ConsultationInquiryForm() {
       <section className="border-y border-border bg-muted/35">
         <div className="container-page grid gap-6 py-10 sm:grid-cols-3 sm:gap-0">
           <div className="flex gap-3 border-border sm:border-r sm:px-6 sm:first:pl-0">
-            <MapPin className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+            <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
             <div>
-              <p className="text-small font-medium">Place in context</p>
+              <p className="text-small font-medium">Licensed officers</p>
               <p className="mt-1 text-caption text-muted-foreground">
-                Site, setting, and movement.
+                Armed and unarmed, trained and supervised.
               </p>
             </div>
           </div>
@@ -89,11 +89,11 @@ export function ConsultationInquiryForm() {
             </div>
           </div>
           <div className="flex gap-3 sm:pl-6 sm:pr-0">
-            <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+            <MapPin className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
             <div>
-              <p className="text-small font-medium">People-first lens</p>
+              <p className="text-small font-medium">Place in context</p>
               <p className="mt-1 text-caption text-muted-foreground">
-                Security-aware, never alarmist.
+                Site, setting, and movement — for guard posts and design reviews alike.
               </p>
             </div>
           </div>

@@ -93,7 +93,7 @@ describe('/llms.txt route', () => {
     it('starts with the site name heading and description blockquote', () => {
       expect(
         body.startsWith(
-          '# Thoughtful Design\n\n> CPTED design reviews that catch security gaps at the drawing board, before construction begins.',
+          '# Genisis Security Services\n\n> Licensed armed and unarmed security guard services, backed by CPTED-informed security design consulting.',
         ),
       ).toBe(true);
     });

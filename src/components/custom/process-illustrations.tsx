@@ -64,7 +64,7 @@ export function ShieldMark({ className }: { className?: string }) {
       />
       <rect x="12.5" y="27" width="4" height="9" fill="var(--color-primary)" />
       <rect x="18" y="20" width="4" height="16" fill="var(--color-primary)" />
-      <rect x="23.5" y="24" width="4" height="12" fill="var(--color-olive)" />
+      <rect x="23.5" y="24" width="4" height="12" fill="var(--color-gold)" />
     </svg>
   );
 }

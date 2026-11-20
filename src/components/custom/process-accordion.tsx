@@ -1,9 +1,10 @@
-// @claude:user-owned — expandable version of the "How an engagement runs"
-// process timeline on the homepage (see (setup)/page.tsx). Each stage opens
-// to show a sample deliverable, all drawn from the same running example —
-// the Grand Cayman beachfront condominium already published at
+// @claude:user-owned — expandable process timeline for the secondary design-
+// consulting service, rendered inside the #consulting section on the
+// homepage (see (setup)/page.tsx). Each stage opens to show a sample
+// deliverable, all drawn from the same running example — the Grand Cayman
+// beachfront condominium already published at
 // /portfolio/beachfront-condominium — so a visitor can see one project
-// carried end to end through the engagement.
+// carried end to end through a CPTED consulting engagement.
 
 'use client';
 
@@ -100,7 +101,7 @@ function ProcessIcon({ stage }: { stage: 1 | 2 | 3 | 4 }) {
           strokeWidth="1.25"
           strokeDasharray="3 3"
         />
-        <rect x="14" y="26" width="18" height="18" fill="var(--color-olive)" opacity="0.85" />
+        <rect x="14" y="26" width="18" height="18" fill="var(--color-gold)" opacity="0.85" />
         <path
           d="M 32 14 L 46 28"
           stroke="var(--color-primary-foreground)"
@@ -131,7 +132,7 @@ function ProcessIcon({ stage }: { stage: 1 | 2 | 3 | 4 }) {
         <circle cx="14" cy="20" r="2.25" fill="var(--color-primary-foreground)" fillOpacity="0.7" />
         <path
           d="M28 4c-4.4 0-8 3.4-8 7.7 0 5.8 8 14.3 8 14.3s8-8.5 8-14.3C36 7.4 32.4 4 28 4z"
-          fill="var(--color-olive)"
+          fill="var(--color-gold)"
         />
         <circle cx="28" cy="11.5" r="3" fill="var(--color-primary)" />
       </svg>
@@ -181,11 +182,11 @@ function ProcessIcon({ stage }: { stage: 1 | 2 | 3 | 4 }) {
           y1="40"
           x2="35"
           y2="40"
-          stroke="var(--color-olive)"
+          stroke="var(--color-gold)"
           strokeWidth="1.75"
           strokeLinecap="round"
         />
-        <circle cx="17" cy="40" r="1.75" fill="var(--color-olive)" />
+        <circle cx="17" cy="40" r="1.75" fill="var(--color-gold)" />
       </svg>
     );
   }
@@ -210,7 +211,7 @@ function ProcessIcon({ stage }: { stage: 1 | 2 | 3 | 4 }) {
             y={y}
             width="6"
             height="6"
-            fill={i === 2 ? 'var(--color-olive)' : 'none'}
+            fill={i === 2 ? 'var(--color-gold)' : 'none'}
             stroke={i === 2 ? 'none' : 'var(--color-primary-foreground)'}
             strokeOpacity="0.6"
             strokeWidth="1.25"
@@ -263,11 +264,11 @@ function ReportPage({ summary, items }: { summary: string; items: string[] }) {
           </p>
         </div>
       </div>
-      <p className="mt-4 text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+      <p className="mt-4 text-caption font-semibold uppercase tracking-[0.08em] text-gold">
         Executive summary
       </p>
       <p className="mt-2 text-[12.5px] leading-relaxed text-muted-foreground">{summary}</p>
-      <p className="mt-4 text-caption font-semibold uppercase tracking-[0.08em] text-olive">
+      <p className="mt-4 text-caption font-semibold uppercase tracking-[0.08em] text-gold">
         Key recommendations
       </p>
       <ol className="mt-2 space-y-1.5">
@@ -360,7 +361,7 @@ export function ProcessAccordion() {
             <div className="grid w-full gap-6 text-left sm:grid-cols-[5.5rem_1fr_1.2fr_1.1fr] sm:items-center sm:gap-8">
               <div className="flex items-center gap-4 sm:flex-col sm:items-start sm:gap-4">
                 <ProcessIcon stage={step.stage} />
-                <span className="font-display text-h3 font-normal text-olive">{step.index}</span>
+                <span className="font-display text-h3 font-normal text-gold">{step.index}</span>
               </div>
               <span className="font-display text-h4 font-normal text-primary-foreground">
                 {step.title}
@@ -382,7 +383,7 @@ export function ProcessAccordion() {
                 illustration={<PlanPhoto {...PLAN_IMAGE} />}
                 eyebrow="Sample walkthrough — 5-Story Luxury Beachfront Condominium, Grand Cayman"
               >
-                <p className="text-eyebrow text-olive">Design-stage CPTED memo</p>
+                <p className="text-eyebrow text-gold">Design-stage CPTED memo</p>
                 <p className="mt-4 text-body text-muted-foreground">
                   The review reads the concept board against the four core CPTED strategies —
                   natural surveillance, natural access control, territorial reinforcement, and
@@ -393,7 +394,7 @@ export function ProcessAccordion() {
                 </p>
                 {CASE && (
                   <>
-                    <p className="mt-6 text-eyebrow text-olive">Documents reviewed</p>
+                    <p className="mt-6 text-eyebrow text-gold">Documents reviewed</p>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {CASE.documentsReviewed.map((doc) => (
                         <li
@@ -414,7 +415,7 @@ export function ProcessAccordion() {
                 illustration={<PlanPhoto {...SITE_IMAGE} />}
                 eyebrow="Sample walkthrough — 5-Story Luxury Beachfront Condominium, Grand Cayman"
               >
-                <p className="text-eyebrow text-olive">Site assessment field notes</p>
+                <p className="text-eyebrow text-gold">Site assessment field notes</p>
                 <p className="mt-4 text-body text-muted-foreground">
                   A chronological read of the site plan, floor plans, elevations, and building
                   section, in the order a visitor — and separately, an opportunistic intruder —
@@ -424,7 +425,7 @@ export function ProcessAccordion() {
                   <CaseStudyBody blocks={FINDINGS_BLOCKS} />
                 </div>
                 <div className="mt-8">
-                  <p className="text-eyebrow text-olive">Site walkthrough</p>
+                  <p className="text-eyebrow text-gold">Site walkthrough</p>
                   <p className="mt-2 text-body text-muted-foreground">
                     A video walkthrough of the physical site, recorded during the assessment visit.
                   </p>
@@ -445,7 +446,7 @@ export function ProcessAccordion() {
                 }
                 eyebrow="Sample walkthrough — 5-Story Luxury Beachfront Condominium, Grand Cayman"
               >
-                <p className="text-eyebrow text-olive">CPTED assessment report</p>
+                <p className="text-eyebrow text-gold">CPTED assessment report</p>
                 <div className="mt-4">
                   <CaseStudyBody blocks={RECOMMENDATIONS_BLOCKS} />
                 </div>
@@ -469,7 +470,7 @@ export function ProcessAccordion() {
                 illustration={<PlanPhoto {...PLAN_IMAGE} stamp />}
                 eyebrow="Sample walkthrough — 5-Story Luxury Beachfront Condominium, Grand Cayman"
               >
-                <p className="text-eyebrow text-olive">
+                <p className="text-eyebrow text-gold">
                   Verification &amp; sign-off letter{' '}
                   <span className="text-muted-foreground">— illustrative</span>
                 </p>
@@ -479,7 +480,7 @@ export function ProcessAccordion() {
                   closing summary, shown here to illustrate the deliverable — not a claim that this
                   specific building has been built or inspected.
                 </p>
-                <div className="mt-5 space-y-4 border-l-2 border-olive/40 pl-4">
+                <div className="mt-5 space-y-4 border-l-2 border-gold/40 pl-4">
                   <p className="text-small font-semibold text-foreground">
                     Executive summary — implementation verification
                   </p>

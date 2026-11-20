@@ -3,6 +3,7 @@
 'use client';
 
 import { ChevronDown, Menu } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
@@ -123,8 +124,19 @@ export function SiteNav() {
         aria-label="Primary"
         className="mx-auto flex h-14 max-w-screen-xl items-center gap-2 px-4"
       >
-        <Link href="/" className="mr-2 shrink-0 truncate text-base font-semibold tracking-tight">
-          {siteName}
+        <Link
+          href="/"
+          className="mr-2 flex shrink-0 items-center gap-2 truncate text-base font-semibold tracking-tight"
+        >
+          <Image
+            src="/assets/brand/gss-mark-160.png"
+            alt=""
+            width={28}
+            height={28}
+            className="size-7 shrink-0"
+            priority
+          />
+          <span className="truncate">{siteName}</span>
         </Link>
 
         {/* Desktop (md+): inline slots — direct links + `menu` dropdowns */}

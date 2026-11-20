@@ -1,9 +1,10 @@
-# Thoughtful Design
+# Genisis Security Services
 
-The Thoughtful Design consultancy site — CPTED (Crime Prevention Through
-Environmental Design) security consulting, built for prospects to learn the
-practice, request a consultation, and (eventually) preview a sample
-assessment before booking a full engagement.
+The Genisis Security Services site — licensed armed and unarmed security
+guard staffing, with CPTED (Crime Prevention Through Environmental Design)
+design consulting offered as a secondary service, built for prospects to
+request guard coverage, learn about the design-consulting practice, and
+(eventually) preview a sample assessment before booking a full engagement.
 
 Next.js 16 App Router, React 19, Tailwind 4, Prisma, and a shadcn UI
 baseline. Originally scaffolded from a third-party template; **now

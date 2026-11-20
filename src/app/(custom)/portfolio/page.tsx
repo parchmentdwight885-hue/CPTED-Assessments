@@ -11,7 +11,7 @@ import { siteName } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Sample assessments',
-  description: `Preliminary CPTED design reviews, shared to show how ${siteName} reads a site before you start a consultation.`,
+  description: `A sample of ${siteName}'s CPTED design-consulting work — the service we offer alongside armed and unarmed guard staffing.`,
   alternates: { canonical: '/portfolio' },
 };
 
@@ -20,13 +20,12 @@ export default function PortfolioIndexPage() {
     <main>
       <section className="section-lg border-b border-border bg-muted/35">
         <div className="container-page">
-          <p className="text-eyebrow text-olive">Sample work</p>
+          <p className="text-eyebrow text-gold">Design consulting — sample work</p>
           <h1 className="mt-4 max-w-2xl font-display text-h1 tracking-tight text-foreground">
             A look at how we read a place.
           </h1>
           <p className="mt-5 max-w-xl text-body-lg text-muted-foreground">
-            Preliminary, design-stage CPTED reviews — shared here so you can see the depth of a{' '}
-            {siteName} assessment before starting a consultation.
+            {`Alongside our guard services, ${siteName} offers CPTED-informed design consulting. These preliminary, design-stage reviews show the depth of that assessment before you start a consultation.`}
           </p>
         </div>
       </section>

@@ -47,8 +47,8 @@ automatically on every deploy via the `vercel-build` script.
    - `DATABASE_URL` — from step 2 (skip if you provisioned Vercel Postgres
      in the same project — it's added automatically).
    - `NEXT_PUBLIC_APP_URL` — your production URL, e.g.
-     `https://thoughtfuldesign.ky` (or the `*.vercel.app` URL until you attach
-     a custom domain).
+     `https://genisissecurityservices.com` (or the `*.vercel.app` URL until
+     you attach a custom domain).
    - `SEO_INDEXABLE` — set to `true` on the Production environment only,
      so previews stay disallowed from indexing.
    - `CRON_SECRET` — only if you're using the cron pattern (step 4 below);
@@ -67,9 +67,10 @@ automatically on every deploy via the `vercel-build` script.
 
 ## 5. Custom domain (optional)
 
-Project Settings → Domains → add `thoughtfuldesign.ky` (or whatever you own),
-follow Vercel's DNS instructions, then update `NEXT_PUBLIC_APP_URL` to match
-and redeploy (it feeds canonical URLs, the sitemap, and OG images).
+Project Settings → Domains → add `genisissecurityservices.com` (or whatever
+you own), follow Vercel's DNS instructions, then update
+`NEXT_PUBLIC_APP_URL` to match and redeploy (it feeds canonical URLs, the
+sitemap, and OG images).
 
 ## 6. Recurring jobs (optional — skip if you don't need any yet)
 

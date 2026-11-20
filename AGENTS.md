@@ -1,4 +1,4 @@
-# AGENTS.md — Claude's operating manual for Thoughtful Design
+# AGENTS.md — Claude's operating manual for Genisis Security Services
 
 This file is the maintaining agent's contract for this codebase. Claude (via
 Claude Code, Claude Cowork, or chat) is the sole AI framework responsible for
