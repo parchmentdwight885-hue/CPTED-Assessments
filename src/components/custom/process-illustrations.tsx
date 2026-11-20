@@ -2,9 +2,10 @@
 // panel on the homepage (see process-accordion.tsx). PlanPhoto renders real
 // crops taken from the client's own concept board (see
 // public/assets/portfolio/beachfront-condominium/) rather than illustrated
-// or generated imagery. ShieldMark is a small brand mark used on the sample
-// report page. SiteWalkthroughVideo is an embed slot for a future walkthrough
-// clip, with a styled placeholder until one is wired up.
+// or generated imagery. ShieldMark renders the real brand emblem (see
+// public/assets/brand/) used on the sample report page's letterhead.
+// SiteWalkthroughVideo is an embed slot for a future walkthrough clip, with a
+// styled placeholder until one is wired up.
 
 import Image from 'next/image';
 
@@ -50,22 +51,17 @@ export function PlanPhoto({
   );
 }
 
-/** Small shield-and-bars brand mark used as the letterhead on the sample
- * report page. Pure theme tokens, matching the rest of the site's line-art
- * style (see HeroMark in (setup)/page.tsx). */
+/** The real brand emblem, used as the letterhead mark on the sample report
+ * page. */
 export function ShieldMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 46" className={className} role="img" aria-hidden="true">
-      <path
-        d="M20 2 L36 8 V21 C36 32 29 40 20 44 C11 40 4 32 4 21 V8 Z"
-        fill="none"
-        stroke="var(--color-primary)"
-        strokeWidth="2"
-      />
-      <rect x="12.5" y="27" width="4" height="9" fill="var(--color-primary)" />
-      <rect x="18" y="20" width="4" height="16" fill="var(--color-primary)" />
-      <rect x="23.5" y="24" width="4" height="12" fill="var(--color-gold)" />
-    </svg>
+    <Image
+      src="/assets/brand/gss-mark-160.png"
+      alt=""
+      width={160}
+      height={160}
+      className={className}
+    />
   );
 }
 

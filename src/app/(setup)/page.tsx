@@ -52,68 +52,6 @@ const SERVICES = [
   },
 ] as const;
 
-/** Decorative hero mark — an arc, four site datums, and a stack of massed
- * forms reading as a small building. Theme-aware via CSS custom properties
- * (see globals.css / custom-style.css) so it follows dark mode automatically. */
-function HeroMark() {
-  return (
-    <svg
-      viewBox="0 0 470 478"
-      className="w-full max-w-[26rem]"
-      role="img"
-      aria-label="Abstract illustration of a building massed within a site datum"
-    >
-      <title>A building massed within a site datum</title>
-      <path
-        d="M 235 14 A 225 225 0 0 0 235 464"
-        fill="none"
-        stroke="var(--color-primary)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <path
-        d="M 235 14 A 225 225 0 0 1 235 464"
-        fill="none"
-        stroke="var(--color-gold)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeDasharray="0.5 12"
-      />
-      <circle cx="235" cy="14" r="5" fill="var(--color-primary)" />
-      <circle cx="235" cy="464" r="5" fill="var(--color-primary)" />
-      <circle cx="10" cy="239" r="5" fill="var(--color-primary)" />
-      <circle cx="460" cy="239" r="5" fill="var(--color-primary)" />
-      <line x1="235" y1="14" x2="235" y2="464" stroke="var(--color-border)" strokeWidth="1" />
-      <line x1="10" y1="239" x2="460" y2="239" stroke="var(--color-border)" strokeWidth="1" />
-
-      <g>
-        <ellipse cx="235" cy="381" rx="180" ry="10" fill="var(--color-primary)" opacity="0.08" />
-        <path
-          d="M 55 376 Q 130 358 195 376 T 340 368 Q 375 363 405 372"
-          fill="none"
-          stroke="var(--color-muted-foreground)"
-          strokeWidth="1.75"
-          opacity="0.5"
-        />
-        <polygon points="135,378 135,235 202,178 202,378" fill="var(--color-primary)" />
-        <polygon
-          points="135,235 202,178 202,235 162,264"
-          fill="var(--color-primary)"
-          opacity="0.75"
-        />
-        <polygon points="202,378 202,270 265,270 265,378" fill="var(--color-muted-foreground)" />
-        <polygon
-          points="265,270 265,378 292,378 292,281"
-          fill="var(--color-muted-foreground)"
-          opacity="0.8"
-        />
-        <polygon points="292,378 292,210 345,178 345,378" fill="var(--color-gold)" />
-        <polygon points="345,210 345,178 375,196 345,231" fill="var(--color-gold)" opacity="0.8" />
-      </g>
-    </svg>
-  );
-}
-
 export default function HomePage() {
   const featured = CASE_STUDIES[0];
 
@@ -151,7 +89,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex justify-center animate-in fade-in slide-in-from-bottom-3 duration-700 delay-150 lg:justify-end">
-            <HeroMark />
+            <Image
+              src="/assets/brand/gss-mark.png"
+              alt={`${siteName} shield emblem`}
+              width={512}
+              height={512}
+              priority
+              className="w-full max-w-[22rem]"
+            />
           </div>
         </div>
       </section>
