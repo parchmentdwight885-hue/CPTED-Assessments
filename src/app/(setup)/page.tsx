@@ -90,12 +90,12 @@ export default function HomePage() {
           </div>
           <div className="flex justify-center animate-in fade-in slide-in-from-bottom-3 duration-700 delay-150 lg:justify-end">
             <Image
-              src="/assets/brand/gss-mark.png"
-              alt={`${siteName} shield emblem`}
-              width={512}
-              height={512}
+              src="/assets/brand/gss-logo-full.png"
+              alt={`${siteName} logo`}
+              width={629}
+              height={492}
               priority
-              className="w-full max-w-[22rem]"
+              className="w-full max-w-[26rem]"
             />
           </div>
         </div>
